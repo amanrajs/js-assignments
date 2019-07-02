@@ -33,7 +33,16 @@
  *
  */
 function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
+  var i=99;
+  while(i>1){
+    yield `${i} bottles of beer on the wall, ${i} bottles of beer.`;
+    yield i == 2 ? `Take one down and pass it around, ${i-1} bottle of beer on the wall.`: `Take one down and pass it around, ${i-1} bottles of beer on the wall.`;
+    i--;
+  }
+  yield `1 bottle of beer on the wall, 1 bottle of beer.`;
+  yield`Take one down and pass it around, no more bottles of beer on the wall.`;
+  yield`No more bottles of beer on the wall, no more bottles of beer.`;
+  yield`Go to the store and buy some more, 99 bottles of beer on the wall.`;
 }
 
 
@@ -47,7 +56,14 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+  var i=0,j=1;
+  yield i;
+  while(j){
+    var temp=j;
+    j=j+i;
+    i=temp;
+    yield i;
+  }
 }
 
 
@@ -82,7 +98,15 @@ function* getFibonacciSequence() {
  *
  */
 function* depthTraversalTree(root) {
-    throw new Error('Not implemented');
+  var arr=[];
+  arr.push(root);
+  while(arr.length){
+  var a=arr.pop();
+  yield a;
+  if(a.children)
+  for(var i=a.children.length-1;i>=0;i--)
+  arr.push(a.children[i]);
+}
 }
 
 
@@ -108,7 +132,18 @@ function* depthTraversalTree(root) {
  *
  */
 function* breadthTraversalTree(root) {
-    throw new Error('Not implemented');
+  var index=0;
+  var arr=[];
+  arr.push(root);
+  while(index != arr.length){
+    var a=arr[index];
+    index++;//var a=arr.shift();
+  yield a;
+  if(a.children)
+  for(var i=0;i<a.children.length;i++)
+  arr.push(a.children[i]);
+}
+
 }
 
 
@@ -126,7 +161,27 @@ function* breadthTraversalTree(root) {
  *   [ 1, 3, 5, ... ], [ -1 ] => [ -1, 1, 3, 5, ...]
  */
 function* mergeSortedSequences(source1, source2) {
-    throw new Error('Not implemented');
+  let s1 = source1(),
+  s2 = source2(),
+  a = s1.next(),
+  b = s2.next();
+  while (!a.done && !b.done) {
+      yield Math.min(a.value, b.value);
+      if (a.value < b.value) {
+          a = s1.next();
+      } else {
+          b = s2.next();
+      }
+  }
+  while (!a.done) {
+      yield a.value;
+      a = s1.next();
+  }
+  while (!b.done) {
+      yield b.value;
+      b = s2.next();
+  }
+
 }
 
 

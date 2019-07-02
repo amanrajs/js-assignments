@@ -92,8 +92,8 @@ describe('03-date-tasks', function() {
         });
 
     });
-    
-    
+
+
     it.optional('angleBetweenClockHands should returns the angle bettween clock hands for specified Greenwich datetime', function () {
         [
             {
@@ -128,7 +128,7 @@ describe('03-date-tasks', function() {
             assert.equal(
                 tasks.angleBetweenClockHands(new Date(data.date)),
                 data.expected,
-                `Incorrect result for angleBetweenClockHands(${new Date(data.date).toUTCString()}):`   
+                `Incorrect result for angleBetweenClockHands(${new Date(data.date).toUTCString()}):`
             );
         });
     });

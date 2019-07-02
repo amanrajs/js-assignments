@@ -397,7 +397,7 @@ describe('07-yield-tasks', function() {
 
     it.optional('mergeSortedSequences should merge two sorted sequences into one sorted sequence', () => {
         const ITEMS_COUNT = 500;
-        
+
         var odds = function* () {
                for(var i=1; true; i+=2) yield i;
             };
@@ -429,7 +429,7 @@ describe('07-yield-tasks', function() {
             if (count == ITEMS_COUNT) break;
         }
         assert.equal(count, ITEMS_COUNT);
-        
+
 
         var minus1 = function* () { yield -1; }
         expected = -1;
